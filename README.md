@@ -1,10 +1,10 @@
 # ansible-role-kali #
 
-[![Build Status](https://travis-ci.com/cisagov/skeleton-ansible-role.svg?branch=develop)](https://travis-ci.com/cisagov/skeleton-ansible-role)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/skeleton-ansible-role.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/skeleton-ansible-role/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/skeleton-ansible-role.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/skeleton-ansible-role/context:python)
+[![Build Status](https://travis-ci.com/cisagov/ansible-role-kali.svg?branch=develop)](https://travis-ci.com/cisagov/ansible-role-kali)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-kali.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-kali/alerts/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-kali.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-kali/context:python)
 
-An Ansible role for setting up kali
+An Ansible role for setting up Kali
 
 ## Requirements ##
 
@@ -50,4 +50,4 @@ with this waiver of copyright interest.
 
 ## Author Information ##
 
-First Last - <kyle.evers@trio.dhs.gov>
+Kyle Evers - <kyle.evers@trio.dhs.gov>
