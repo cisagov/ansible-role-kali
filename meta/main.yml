@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: First Last
+  author: Kyle Evers
   description: Skeleton Ansible role
   company: CISA NCATS
   license: CC0
@@ -15,4 +15,6 @@ galaxy_info:
   galaxy_tags:
     - skeleton
 
-dependencies: []
+dependencies:
+  - src: https://github.com/cisagov/ansible-role-bloodhound
+    name: bloodhound

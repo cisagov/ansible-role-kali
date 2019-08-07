@@ -5,7 +5,6 @@
     path: "/tools/{{ item }}"
     state: directory
   loop:
-    - BloodHound
     - CrackMapExec
     - datapipe            # Cant find repo
     - dirsearch
@@ -28,14 +27,6 @@
     - sshenum
     - Veil-Evasion
     - ysoserial
-
-- name: Download and untar the BloodHound tarball
-  unarchive:
-    src: "https://github.com/BloodHoundAD/BloodHound/tarball/master"
-    dest: /tools/BloodHound
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
 
 - name: Download and untar the CrackMapExec tarball
   unarchive:
