@@ -6,8 +6,8 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: debian9
-    image: debian:stretch-slim
+  - name: bootstrap-kali
+    image: kalilinux/kali-linux-docker
 provisioner:
   name: ansible
   lint:
