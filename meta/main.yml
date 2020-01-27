@@ -2,13 +2,14 @@
 galaxy_info:
   author: Kyle Evers
   description: Skeleton Ansible role
-  company: CISA NCATS
+  company: CISA Cyber Assessments
   license: CC0
   min_ansible_version: 2.0
   platforms:
     - name: Debian
       versions:
         - stretch
+        - buster
     - name: Amazon
       versions:
         - 2018.03

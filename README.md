@@ -1,6 +1,6 @@
 # ansible-role-kali #
 
-[![Build Status](https://travis-ci.com/cisagov/ansible-role-kali.svg?branch=develop)](https://travis-ci.com/cisagov/ansible-role-kali)
+[![GitHub Build Status](https://github.com/cisagov/skeleton-ansible-role/workflows/build/badge.svg)](https://github.com/cisagov/skeleton-ansible-role/actions)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-kali.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-kali/alerts/)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-kali.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-kali/context:python)
 
@@ -37,7 +37,7 @@ details.
 
 ## License ##
 
-This project is in the worldwide [public domain](LICENSE.md).
+This project is in the worldwide [public domain](LICENSE).
 
 This project is in the public domain within the United States, and
 copyright and related rights in the work worldwide are waived through
