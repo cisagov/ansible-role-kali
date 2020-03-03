@@ -4,7 +4,8 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-kali.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-kali/alerts/)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-kali.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-kali/context:python)
 
-An Ansible role for setting up Kali
+An Ansible role for installing the packages required in a CISA VM Kali
+instance.
 
 ## Requirements ##
 

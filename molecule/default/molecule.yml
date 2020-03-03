@@ -6,8 +6,8 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: bootstrap-kali
-    image: kalilinux/kali-linux-docker
+  - name: kali
+    image: kalilinux/kali-rolling
 provisioner:
   name: ansible
   lint:
