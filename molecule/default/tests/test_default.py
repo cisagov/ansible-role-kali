@@ -49,6 +49,8 @@ def test_packages(host, pkg):
 )
 def test_directories(host, dir):
     """Test that appropriate directories were created."""
-    directory = host.file("/tools/{}".format(dir))
+    directory = host.file(f"/tools/{dir}")
     assert directory.exists
     assert directory.is_directory
+    # Make sure that the directory is not empty
+    assert host.run_expect([0], f'[ -n "$(ls -A /tools/{dir})" ]')
