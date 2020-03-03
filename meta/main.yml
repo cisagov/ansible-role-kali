@@ -1,28 +1,17 @@
 ---
 galaxy_info:
   author: Kyle Evers
-  description: Skeleton Ansible role
+  description: CISA VM Kali
   company: CISA Cyber Assessments
   license: CC0
   min_ansible_version: 2.0
   platforms:
-    - name: Amazon
-      versions:
-        - 2018.03
+    # Kali linux is based on Debian testing
     - name: Debian
       versions:
-        - stretch
-        - buster
-    - name: Fedora
-      versions:
-        - 29
-        # Ansible currently insists on installing python2-dnf, which
-        # does not exist in Fedora 30.  Until that is resolved, we
-        # can't use Fedora 30.
-        # - 30
-        - 31
+        - bullseye
   galaxy_tags:
-    - skeleton
+    - kali
 
 dependencies:
   - src: https://github.com/cisagov/ansible-role-bloodhound
