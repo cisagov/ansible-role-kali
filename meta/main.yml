@@ -6,7 +6,8 @@ galaxy_info:
   license: CC0
   min_ansible_version: 2.0
   platforms:
-    # Kali linux is based on Debian testing
+    # Kali linux isn't an option here, but it is based on Debian
+    # testing
     - name: Debian
       versions:
         - bullseye
