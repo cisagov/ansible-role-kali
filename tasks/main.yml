@@ -1,189 +1,55 @@
 ---
 # tasks file for kali
-- name: Create directory for each tool
-  file:
-    path: "/tools/{{ item }}"
-    state: directory
-  loop:
-    - CrackMapExec
-    - datapipe            # Cant find repo
-    - dirsearch
-    - DomainTrustExplorer
-    - Egress-Assess
-    - Empire
-    # - EmPyre              # Deprecated for regular Empire which has both
-    - EyeWitness
-    - ftpenum
-    - Hasher
-    - ImpDump
-    - KeeThief
-    - PowerSploit         # Repo moved
-    # - PowerTools          # Deprecated
-    - Responder
-    - SecLists
-    - shellshocker-pocs
-    - SimplyEmail
-    - SimplyTemplate
-    - sshenum
-    - Veil-Evasion
-    - ysoserial
 
-- name: Download and untar the CrackMapExec tarball
-  unarchive:
-    src: "https://github.com/byt3bl33d3r/CrackMapExec/tarball/master"
-    dest: /tools/CrackMapExec
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
+- name: Install packages for tools where a package exists
+  package:
+    name:
+      - crackmapexec
+      - eyewitness
+      - powershell-empire
+      - powersploit
+      - responder
+      - seclists
+      - veil
 
-- name: Download and untar the datapipe tarball
-  unarchive:
-    src: "https://github.com/bovine/datapipe/tarball/master"
-    dest: /tools/datapipe
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the dirsearch tarball
-  unarchive:
-    src: "https://github.com/maurosoria/dirsearch/tarball/master"
-    dest: /tools/dirsearch
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the DomainTrustExplorer tarball
-  unarchive:
-    src: "https://github.com/sixdub/DomainTrustExplorer/tarball/master"
-    dest: /tools/DomainTrustExplorer
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the Egress Assess tarball
-  unarchive:
-    src: "https://github.com/ChrisTruncer/Egress-Assess/tarball/master"
-    dest: /tools/Egress-Assess
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the Empire tarball
-  unarchive:
-    src: "https://github.com/EmpireProject/Empire/tarball/master"
-    dest: /tools/Empire
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the EyeWitness tarball
-  unarchive:
-    src: "https://github.com/ChrisTruncer/EyeWitness/tarball/master"
-    dest: /tools/EyeWitness
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the ftpenum tarball
-  unarchive:
-    src: "https://github.com/MacR6/ftpenum/tarball/master"
-    dest: /tools/ftpenum
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the Hasher tarball
-  unarchive:
-    src: "https://github.com/FortyNorthSecurity/Hasher/tarball/master"
-    dest: /tools/Hasher
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the ImpDump tarball
-  unarchive:
-    src: "https://github.com/HarmJ0y/ImpDump/tarball/master"
-    dest: /tools/ImpDump
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the KeeThief tarball
-  unarchive:
-    src: "https://github.com/HarmJ0y/KeeThief/tarball/master"
-    dest: /tools/KeeThief
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the PowerSploit tarball
-  unarchive:
-    src: "https://github.com/PowerShellMafia/PowerSploit/tarball/master"
-    dest: /tools/PowerSploit
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the Responder tarball
-  unarchive:
-    src: "https://github.com/SpiderLabs/Responder/tarball/master"
-    dest: /tools/Responder
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the SecLists tarball
-  unarchive:
-    src: "https://github.com/danielmiessler/SecLists/tarball/master"
-    dest: /tools/SecLists
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the shellshocker-pocs tarball
-  unarchive:
-    src: "https://github.com/mubix/shellshocker-pocs/tarball/master"
-    dest: /tools/shellshocker-pocs
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the SimplyEmail tarball
-  unarchive:
-    src: "https://github.com/SimplySecurity/SimplyEmail/tarball/master"
-    dest: /tools/SimplyEmail
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the SimplyTemplate tarball
-  unarchive:
-    src: "https://github.com/SimplySecurity/SimplyTemplate/tarball/master"
-    dest: /tools/SimplyTemplate
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the sshenum tarball
-  unarchive:
-    src: "https://github.com/MacR6/sshenum/tarball/master"
-    dest: /tools/sshenum
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the Veil-Evasion tarball
-  unarchive:
-    src: "https://github.com/Veil-Framework/Veil-Evasion/tarball/master"
-    dest: /tools/Veil-Evasion
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
-
-- name: Download and untar the ysoserial tarball
-  unarchive:
-    src: "https://github.com/frohoff/ysoserial/tarball/master"
-    dest: /tools/ysoserial
-    remote_src: yes
-    extra_opts:
-      - "--strip-components=1"
+- name: Install other tools manually
+  block:
+    - name: Create a directory for each tool that must be installed manually
+      file:
+        path: "/tools/{{ item }}"
+        state: directory
+      loop:
+        - datapipe
+        - dirsearch
+        - DomainTrustExplorer
+        - Egress-Assess
+        - ftpenum
+        - Hasher
+        - ImpDump
+        - KeeThief
+        - shellshocker-pocs
+        - SimplyEmail
+        - SimplyTemplate
+        - sshenum
+        - ysoserial
+    - name: Manually install each tool
+      unarchive:
+        src: "{{ item.repo }}"
+        dest: "/tools/{{ item.dir_name }}"
+        remote_src: yes
+        extra_opts:
+          - "--strip-components=1"
+      loop:
+        - {dir_name: "datapipe", repo: "https://github.com/bovine/datapipe/tarball/master"}
+        - {dir_name: "dirsearch", repo: "https://github.com/maurosoria/dirsearch/tarball/master"}
+        - {dir_name: "DomainTrustExplorer", repo: "https://github.com/sixdub/DomainTrustExplorer/tarball/master"}
+        - {dir_name: "Egress-Assess", repo: "https://github.com/ChrisTruncer/Egress-Assess/tarball/master"}
+        - {dir_name: "ftpenum", repo: "https://github.com/MacR6/ftpenum/tarball/master"}
+        - {dir_name: "Hasher", repo: "https://github.com/FortyNorthSecurity/Hasher/tarball/master"}
+        - {dir_name: "ImpDump", repo: "https://github.com/HarmJ0y/ImpDump/tarball/master"}
+        - {dir_name: "KeeThief", repo: "https://github.com/HarmJ0y/KeeThief/tarball/master"}
+        - {dir_name: "shellshocker-pocs", repo: "https://github.com/mubix/shellshocker-pocs/tarball/master"}
+        - {dir_name: "SimplyEmail", repo: "https://github.com/SimplySecurity/SimplyEmail/tarball/master"}
+        - {dir_name: "SimplyTemplate", repo: "https://github.com/SimplySecurity/SimplyTemplate/tarball/master"}
+        - {dir_name: "sshenum", repo: "https://github.com/MacR6/sshenum/tarball/master"}
+        - {dir_name: "ysoserial", repo: "https://github.com/frohoff/ysoserial/tarball/master"}
