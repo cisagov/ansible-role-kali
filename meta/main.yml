@@ -5,15 +5,15 @@ galaxy_info:
   company: CISA Cyber Assessments
   license: CC0
   min_ansible_version: 2.0
-  platforms:
-    # Kali linux isn't an option here, but it is based on Debian
-    # testing
-    - name: Debian
-      versions:
-        - bullseye
+  # There is an empty platforms key because Kali linux isn't an option
+  # for it.  Even though Kali is based on Debian Testing
+  # (https://www.kali.org/docs/policy/kali-linux-relationship-with-debian),
+  # we are installing a lot of Kali-specific packages in this role.
+  #
+  # The Ansible linter does not allow an empty platforms key, so the
+  # noqa 701 is required here.
+  platforms: [] # noqa 701
   galaxy_tags:
     - kali
 
-dependencies:
-  - src: https://github.com/cisagov/ansible-role-bloodhound
-    name: bloodhound
+dependencies: []

@@ -16,7 +16,11 @@
   block:
     - name: Create a directory for each tool that must be installed manually
       file:
-        path: "/tools/{{ item }}"
+        group: "{{ group }}"
+        # Allow both root and the desired group to have full
+        # permissions in these directories
+        mode: 0775
+        path: /tools/{{ item }}
         state: directory
       loop:
         - datapipe
@@ -34,11 +38,12 @@
         - ysoserial
     - name: Manually install each tool
       unarchive:
-        src: "{{ item.repo }}"
         dest: "/tools/{{ item.dir_name }}"
-        remote_src: yes
         extra_opts:
           - "--strip-components=1"
+        group: "{{ group }}"
+        remote_src: yes
+        src: "{{ item.repo }}"
       loop:
         - {dir_name: "datapipe", repo: "https://github.com/bovine/datapipe/tarball/master"}
         - {dir_name: "dirsearch", repo: "https://github.com/maurosoria/dirsearch/tarball/master"}
