@@ -9,6 +9,9 @@ galaxy_info:
   # for it.  Even though Kali is based on Debian Testing
   # (https://www.kali.org/docs/policy/kali-linux-relationship-with-debian),
   # we are installing a lot of Kali-specific packages in this role.
+  #
+  # The Ansible linter does not allow an empty platforms key, so the
+  # noqa 701 is required here.
   platforms: [] # noqa 701
   galaxy_tags:
     - kali
