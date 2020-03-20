@@ -1,0 +1,5 @@
+---
+# defaults file for ansible-role-kali
+
+# Group ownership for the tools that are installed directly to /tools
+group: root
