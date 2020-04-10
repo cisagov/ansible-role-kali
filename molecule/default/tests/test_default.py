@@ -62,6 +62,7 @@ def test_packages(host, pkg):
         "SimplyEmail",
         "SimplyTemplate",
         "sshenum",
+        "Sublist3r",
         "TikiTorch",
         "ysoserial",
     ],

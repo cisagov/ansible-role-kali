@@ -52,6 +52,7 @@
         - SimplyEmail
         - SimplyTemplate
         - sshenum
+        - Sublist3r
         - TikiTorch
         - ysoserial
     - name: Manually install each tool
@@ -88,6 +89,7 @@
         - {dir_name: "SimplyEmail", repo: "https://github.com/SimplySecurity/SimplyEmail/tarball/master"}
         - {dir_name: "SimplyTemplate", repo: "https://github.com/SimplySecurity/SimplyTemplate/tarball/master"}
         - {dir_name: "sshenum", repo: "https://github.com/MacR6/sshenum/tarball/master"}
+        - {dir_name: "Sublist3r", repo: "https://github.com/aboul3la/Sublist3r/tarball/master"}
         - {dir_name: "TikiTorch", repo: "https://github.com/rasta-mouse/TikiTorch/tarball/master"}
         - {dir_name: "ysoserial", repo: "https://github.com/frohoff/ysoserial/tarball/master"}
 
