@@ -72,7 +72,7 @@
         - {dir_name: "DomainTrustExplorer", repo: "https://github.com/sixdub/DomainTrustExplorer/tarball/master"}
         - {dir_name: "Egress-Assess", repo: "https://github.com/ChrisTruncer/Egress-Assess/tarball/master"}
         - {dir_name: "ftpenum", repo: "https://github.com/MacR6/ftpenum/tarball/master"}
-        - {dir_name: "gnmap-parser", repo: "https://github.com/jasonjfrank/gnmap-parser/tarball/master"}
+        - {dir_name: "gnmap-parser", repo: "https://github.com/ChrisTruncer/gnmap-parser/tarball/master"}
         - {dir_name: "Hasher", repo: "https://github.com/FortyNorthSecurity/Hasher/tarball/master"}
         - {dir_name: "ImpDump", repo: "https://github.com/HarmJ0y/ImpDump/tarball/master"}
         - {dir_name: "Internal-Monologue", repo: "https://github.com/eladshamir/Internal-Monologue/tarball/master"}
