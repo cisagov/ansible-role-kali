@@ -6,6 +6,10 @@
     name:
       - crackmapexec
       - eyewitness
+      - gobuster
+      - kerberoast
+      - mimikatz
+      - nikto
       - powershell-empire
       - powersploit
       - responder
@@ -23,18 +27,32 @@
         path: /tools/{{ item }}
         state: directory
       loop:
+        - CACTUSTORCH
+        - checkpwnedemails
         - datapipe
+        - demiguise
         - dirsearch
         - DomainTrustExplorer
         - Egress-Assess
         - ftpenum
+        - gnmap-parser
         - Hasher
         - ImpDump
+        - Internal-Monologue
         - KeeThief
+        - mikto
+        - morphHTA
+        - nlzr
+        - PowerTools
+        - PowerUpSQL
+        - RandomPS-Scripts
+        - SessionGopher
+        - SharpShooter
         - shellshocker-pocs
         - SimplyEmail
         - SimplyTemplate
         - sshenum
+        - TikiTorch
         - ysoserial
     - name: Manually install each tool
       unarchive:
@@ -45,16 +63,58 @@
         remote_src: yes
         src: "{{ item.repo }}"
       loop:
+        - {dir_name: "CACTUSTORCH", repo: "https://github.com/mdsecactivebreach/CACTUSTORCH/tarball/master"}
+        - {dir_name: "checkpwnedemails", repo: "https://github.com/Techno-Hwizrdry/checkpwnedemails/tarball/master"}
         - {dir_name: "datapipe", repo: "https://github.com/bovine/datapipe/tarball/master"}
+        - {dir_name: "demiguise", repo: "https://github.com/nccgroup/demiguise/tarball/master"}
         - {dir_name: "dirsearch", repo: "https://github.com/maurosoria/dirsearch/tarball/master"}
         - {dir_name: "DomainTrustExplorer", repo: "https://github.com/sixdub/DomainTrustExplorer/tarball/master"}
         - {dir_name: "Egress-Assess", repo: "https://github.com/ChrisTruncer/Egress-Assess/tarball/master"}
         - {dir_name: "ftpenum", repo: "https://github.com/MacR6/ftpenum/tarball/master"}
+        - {dir_name: "gnmap-parser", repo: "https://github.com/jasonjfrank/gnmap-parser/tarball/master"}
         - {dir_name: "Hasher", repo: "https://github.com/FortyNorthSecurity/Hasher/tarball/master"}
         - {dir_name: "ImpDump", repo: "https://github.com/HarmJ0y/ImpDump/tarball/master"}
+        - {dir_name: "Internal-Monologue", repo: "https://github.com/eladshamir/Internal-Monologue/tarball/master"}
         - {dir_name: "KeeThief", repo: "https://github.com/HarmJ0y/KeeThief/tarball/master"}
+        - {dir_name: "mikto", repo: "https://github.com/ChrisTruncer/mikto/tarball/master"}
+        - {dir_name: "morphHTA", repo: "https://github.com/vysecurity/morphHTA/tarball/master"}
+        - {dir_name: "nlzr", repo: "https://github.com/noahpowers/nlzr/tarball/master"}
+        - {dir_name: "PowerTools", repo: "https://github.com/PowerShellEmpire/PowerTools/tarball/master"}
+        - {dir_name: "PowerUpSQL", repo: "https://github.com/NetSPI/PowerUpSQL/tarball/master"}
+        - {dir_name: "RandomPS-Scripts", repo: "https://github.com/xorrior/RandomPS-Scripts/tarball/master"}
+        - {dir_name: "SessionGopher", repo: "https://github.com/Arvanaghi/SessionGopher/tarball/master"}
+        - {dir_name: "SharpShooter", repo: "https://github.com/mdsecactivebreach/SharpShooter/tarball/master"}
         - {dir_name: "shellshocker-pocs", repo: "https://github.com/mubix/shellshocker-pocs/tarball/master"}
         - {dir_name: "SimplyEmail", repo: "https://github.com/SimplySecurity/SimplyEmail/tarball/master"}
         - {dir_name: "SimplyTemplate", repo: "https://github.com/SimplySecurity/SimplyTemplate/tarball/master"}
         - {dir_name: "sshenum", repo: "https://github.com/MacR6/sshenum/tarball/master"}
+        - {dir_name: "TikiTorch", repo: "https://github.com/rasta-mouse/TikiTorch/tarball/master"}
         - {dir_name: "ysoserial", repo: "https://github.com/frohoff/ysoserial/tarball/master"}
+
+# This tool is installed a bit differently.  The release zip for it
+# contains pre-compiled Go code, which is what we want to install.
+- name: Install aquatone
+  block:
+    - name: Install dependencies for aquatone
+      package:
+        name:
+          - chromium
+          - unzip
+    - name: Create a directory where aquatone will be installed manually
+      file:
+        group: "{{ group }}"
+        # Allow both root and the desired group to have full
+        # permissions in these directories
+        mode: 0775
+        path: /tools/{{ item }}
+        state: directory
+      loop:
+        - aquatone
+    - name: Manually install aquatone
+      unarchive:
+        dest: "/tools/{{ item.dir_name }}"
+        group: "{{ group }}"
+        remote_src: yes
+        src: "{{ item.repo }}"
+      loop:
+        - {dir_name: "aquatone", repo: "https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip"}
