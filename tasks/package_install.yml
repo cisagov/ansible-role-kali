@@ -1,0 +1,6 @@
+---
+# tasks file for tools installed via package manager
+
+- name: Install packages for tools where a package exists
+  package:
+    name: "{{ tools_installed_via_package_manager }}"

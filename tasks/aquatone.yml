@@ -1,0 +1,30 @@
+---
+# tasks file for aquatone
+
+# This tool is installed a bit differently.  The release zip for it
+# contains pre-compiled Go code, which is what we want to install.
+- name: Install aquatone
+  block:
+    - name: Install dependencies for aquatone
+      package:
+        name:
+          - chromium
+          - unzip
+    - name: Create a directory where aquatone will be installed manually
+      file:
+        group: "{{ group }}"
+        # Allow both root and the desired group to have full
+        # permissions in these directories
+        mode: 0775
+        path: /tools/{{ item }}
+        state: directory
+      loop:
+        - aquatone
+    - name: Manually install aquatone
+      unarchive:
+        dest: "/tools/{{ item.dir_name }}"
+        group: "{{ group }}"
+        remote_src: yes
+        src: "{{ item.repo }}"
+      loop:
+        - {dir_name: "aquatone", repo: "https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip"}
