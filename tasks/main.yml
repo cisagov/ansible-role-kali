@@ -42,7 +42,10 @@
         - Internal-Monologue
         - KeeThief
         - mikto
+        - Misc
+        - mitm6
         - morphHTA
+        - MS17-010
         - nlzr
         - PowerTools
         - PowerUpSQL
@@ -78,7 +81,10 @@
         - {dir_name: "Internal-Monologue", repo: "https://github.com/eladshamir/Internal-Monologue/tarball/master"}
         - {dir_name: "KeeThief", repo: "https://github.com/HarmJ0y/KeeThief/tarball/master"}
         - {dir_name: "mikto", repo: "https://github.com/ChrisTruncer/mikto/tarball/master"}
+        - {dir_name: "Misc", repo: "https://github.com/xan7r/Misc/tarball/master"}
+        - {dir_name: "mitm6", repo: "https://github.com/fox-it/mitm6/tarball/master"}
         - {dir_name: "morphHTA", repo: "https://github.com/vysecurity/morphHTA/tarball/master"}
+        - {dir_name: "MS17-010", repo: "https://github.com/worawit/MS17-010/tarball/master"}
         - {dir_name: "nlzr", repo: "https://github.com/noahpowers/nlzr/tarball/master"}
         - {dir_name: "PowerTools", repo: "https://github.com/PowerShellEmpire/PowerTools/tarball/master"}
         - {dir_name: "PowerUpSQL", repo: "https://github.com/NetSPI/PowerUpSQL/tarball/master"}
