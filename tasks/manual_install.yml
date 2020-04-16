@@ -12,6 +12,8 @@
         path: "{{ manually_installed_tools_base_dir }}/{{ item.dir_name }}"
         state: directory
       loop: "{{ manually_installed_tools }}"
+      loop_control:
+        label: "{{ item.dir_name }}"
     - name: Manually install each tool
       unarchive:
         dest: "{{ manually_installed_tools_base_dir }}/{{ item.dir_name }}"
@@ -21,6 +23,8 @@
         remote_src: yes
         src: "{{ item.repo }}"
       loop: "{{ manually_installed_tools }}"
+      loop_control:
+        label: "{{ item.repo }}"
 
 - name: Install mono for the manually installed packages that need it
   package:
