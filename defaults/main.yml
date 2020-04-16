@@ -66,5 +66,10 @@ manually_installed_tools:
   - {dir_name: "TikiTorch", repo: "https://github.com/rasta-mouse/TikiTorch/tarball/master"}
   - {dir_name: "ysoserial", repo: "https://github.com/frohoff/ysoserial/tarball/master"}
 
+# aquatone, which is installed manually but a little differently than
+# the other packages
+aquatone:
+  - {dir_name: "aquatone", repo: "https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip"}
+
 # Group ownership for the tools that are installed directly to /tools
 group: root
