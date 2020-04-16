@@ -1,0 +1,6 @@
+---
+# tasks file for pip installations
+
+- name: Install some tools via pip
+  pip:
+    name: "{{ tools_installed_via_pip }}"

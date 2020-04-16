@@ -36,6 +36,14 @@ def test_packages(host, pkg):
 
 
 @pytest.mark.parametrize(
+    "pkg", ["mitm6"],
+)
+def test_pip_packages(host, pkg):
+    """Test that appropriate pip packages were installed."""
+    assert pkg in host.pip_package.get_packages(pip_path="pip3")
+
+
+@pytest.mark.parametrize(
     "dir",
     [
         "aquatone",
@@ -63,7 +71,6 @@ def test_packages(host, pkg):
         "KeeThief",
         "mikto",
         "Misc",
-        "mitm6",
         "morphHTA",
         "MS17-010",
         "nlzr",

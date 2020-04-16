@@ -4,6 +4,9 @@
 - name: Load tasks file for tools installed via package manager
   include_tasks: package_install.yml
 
+- name: Load tasks file for tools installed via pip
+  include_tasks: pip_install.yml
+
 - name: Load tasks file for manually-installed tools
   include_tasks: manual_install.yml
 
