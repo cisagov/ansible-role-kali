@@ -16,4 +16,6 @@ galaxy_info:
   galaxy_tags:
     - kali
 
-dependencies: []
+dependencies:
+  - src: https://github.com/cisagov/ansible-role-pip
+    name: pip

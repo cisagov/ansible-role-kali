@@ -1,60 +1,14 @@
 ---
 # tasks file for kali
 
-- name: Install packages for tools where a package exists
-  package:
-    name:
-      - crackmapexec
-      - eyewitness
-      - powershell-empire
-      - powersploit
-      - responder
-      - seclists
-      - veil
+- name: Load tasks file for tools installed via package manager
+  include_tasks: package_install.yml
 
-- name: Install other tools manually
-  block:
-    - name: Create a directory for each tool that must be installed manually
-      file:
-        group: "{{ group }}"
-        # Allow both root and the desired group to have full
-        # permissions in these directories
-        mode: 0775
-        path: /tools/{{ item }}
-        state: directory
-      loop:
-        - datapipe
-        - dirsearch
-        - DomainTrustExplorer
-        - Egress-Assess
-        - ftpenum
-        - Hasher
-        - ImpDump
-        - KeeThief
-        - shellshocker-pocs
-        - SimplyEmail
-        - SimplyTemplate
-        - sshenum
-        - ysoserial
-    - name: Manually install each tool
-      unarchive:
-        dest: "/tools/{{ item.dir_name }}"
-        extra_opts:
-          - "--strip-components=1"
-        group: "{{ group }}"
-        remote_src: yes
-        src: "{{ item.repo }}"
-      loop:
-        - {dir_name: "datapipe", repo: "https://github.com/bovine/datapipe/tarball/master"}
-        - {dir_name: "dirsearch", repo: "https://github.com/maurosoria/dirsearch/tarball/master"}
-        - {dir_name: "DomainTrustExplorer", repo: "https://github.com/sixdub/DomainTrustExplorer/tarball/master"}
-        - {dir_name: "Egress-Assess", repo: "https://github.com/ChrisTruncer/Egress-Assess/tarball/master"}
-        - {dir_name: "ftpenum", repo: "https://github.com/MacR6/ftpenum/tarball/master"}
-        - {dir_name: "Hasher", repo: "https://github.com/FortyNorthSecurity/Hasher/tarball/master"}
-        - {dir_name: "ImpDump", repo: "https://github.com/HarmJ0y/ImpDump/tarball/master"}
-        - {dir_name: "KeeThief", repo: "https://github.com/HarmJ0y/KeeThief/tarball/master"}
-        - {dir_name: "shellshocker-pocs", repo: "https://github.com/mubix/shellshocker-pocs/tarball/master"}
-        - {dir_name: "SimplyEmail", repo: "https://github.com/SimplySecurity/SimplyEmail/tarball/master"}
-        - {dir_name: "SimplyTemplate", repo: "https://github.com/SimplySecurity/SimplyTemplate/tarball/master"}
-        - {dir_name: "sshenum", repo: "https://github.com/MacR6/sshenum/tarball/master"}
-        - {dir_name: "ysoserial", repo: "https://github.com/frohoff/ysoserial/tarball/master"}
+- name: Load tasks file for tools installed via pip
+  include_tasks: pip_install.yml
+
+- name: Load tasks file for manually-installed tools
+  include_tasks: manual_install.yml
+
+- name: Load tasks file for aquatone
+  include_tasks: aquatone.yml

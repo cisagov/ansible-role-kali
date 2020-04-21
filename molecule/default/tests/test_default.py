@@ -17,10 +17,15 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     [
         "crackmapexec",
         "eyewitness",
+        "gobuster",
+        "mimikatz",
+        "mono-complete",
+        "nikto",
         "powershell-empire",
         "powersploit",
         "responder",
         "seclists",
+        "sublist3r",
         "veil",
     ],
 )
@@ -30,20 +35,55 @@ def test_packages(host, pkg):
 
 
 @pytest.mark.parametrize(
+    "pkg", ["mitm6"],
+)
+def test_pip_packages(host, pkg):
+    """Test that appropriate pip packages were installed."""
+    assert pkg in host.pip_package.get_packages(pip_path="pip3")
+
+
+@pytest.mark.parametrize(
     "dir",
     [
+        "aquatone",
+        "CACTUSTORCH",
+        "checkpwnedemails",
         "datapipe",
+        "demiguise",
         "dirsearch",
         "DomainTrustExplorer",
         "Egress-Assess",
         "ftpenum",
+        "GhostPack/Lockless",
+        "GhostPack/Rubeus",
+        "GhostPack/SafetyKatz",
+        "GhostPack/Seatbelt",
+        "GhostPack/SharpDPAPI",
+        "GhostPack/SharpDump",
+        "GhostPack/SharpRoast",
+        "GhostPack/SharpUp",
+        "GhostPack/SharpWMI",
+        "gnmap-parser",
         "Hasher",
         "ImpDump",
+        "Internal-Monologue",
         "KeeThief",
+        "kerberoast",
+        "mikto",
+        "Misc",
+        "morphHTA",
+        "MS17-010",
+        "nlzr",
+        "PowerTools",
+        "PowerUpSQL",
+        "RandomPS-Scripts",
+        "SessionGopher",
+        "SharpShooter",
         "shellshocker-pocs",
         "SimplyEmail",
         "SimplyTemplate",
         "sshenum",
+        "TikiTorch",
         "ysoserial",
     ],
 )

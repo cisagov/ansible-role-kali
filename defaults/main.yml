@@ -1,5 +1,75 @@
 ---
 # defaults file for ansible-role-kali
 
+# Tools installed via the package manager
+tools_installed_via_package_manager:
+  - crackmapexec
+  - eyewitness
+  - gobuster
+  - mimikatz
+  - nikto
+  - powershell-empire
+  - powersploit
+  - responder
+  - seclists
+  - sublist3r
+  - veil
+
+# Tools installed via pip
+tools_installed_via_pip:
+  - mitm6
+
+# Base directory where all manually-installed tools will be installed
+manually_installed_tools_base_dir: "/tools"
+
+# Tools to be manually installed
+manually_installed_tools:
+  - {dir_name: "CACTUSTORCH", repo: "https://github.com/mdsecactivebreach/CACTUSTORCH/tarball/master"}
+  - {dir_name: "checkpwnedemails", repo: "https://github.com/Techno-Hwizrdry/checkpwnedemails/tarball/master"}
+  - {dir_name: "datapipe", repo: "https://github.com/bovine/datapipe/tarball/master"}
+  - {dir_name: "demiguise", repo: "https://github.com/nccgroup/demiguise/tarball/master"}
+  - {dir_name: "dirsearch", repo: "https://github.com/maurosoria/dirsearch/tarball/master"}
+  - {dir_name: "DomainTrustExplorer", repo: "https://github.com/sixdub/DomainTrustExplorer/tarball/master"}
+  - {dir_name: "Egress-Assess", repo: "https://github.com/ChrisTruncer/Egress-Assess/tarball/master"}
+  - {dir_name: "ftpenum", repo: "https://github.com/MacR6/ftpenum/tarball/master"}
+  - {dir_name: "GhostPack/Lockless", repo: "https://github.com/GhostPack/Lockless/tarball/master"}
+  - {dir_name: "GhostPack/Rubeus", repo: "https://github.com/GhostPack/Rubeus/tarball/master"}
+  - {dir_name: "GhostPack/Seatbelt", repo: "https://github.com/GhostPack/Seatbelt/tarball/master"}
+  - {dir_name: "GhostPack/SafetyKatz", repo: "https://github.com/GhostPack/SafetyKatz/tarball/master"}
+  - {dir_name: "GhostPack/SharpDPAPI", repo: "https://github.com/GhostPack/SharpDPAPI/tarball/master"}
+  - {dir_name: "GhostPack/SharpDump", repo: "https://github.com/GhostPack/SharpDump/tarball/master"}
+  - {dir_name: "GhostPack/SharpRoast", repo: "https://github.com/GhostPack/SharpRoast/tarball/master"}
+  - {dir_name: "GhostPack/SharpUp", repo: "https://github.com/GhostPack/SharpUp/tarball/master"}
+  - {dir_name: "GhostPack/SharpWMI", repo: "https://github.com/GhostPack/SharpWMI/tarball/master"}
+  - {dir_name: "gnmap-parser", repo: "https://github.com/ChrisTruncer/gnmap-parser/tarball/master"}
+  - {dir_name: "Hasher", repo: "https://github.com/FortyNorthSecurity/Hasher/tarball/master"}
+  - {dir_name: "ImpDump", repo: "https://github.com/HarmJ0y/ImpDump/tarball/master"}
+  - {dir_name: "Internal-Monologue", repo: "https://github.com/eladshamir/Internal-Monologue/tarball/master"}
+  - {dir_name: "KeeThief", repo: "https://github.com/HarmJ0y/KeeThief/tarball/master"}
+  # The Kali kerberoast package currently (April 16, 2020) pulls in
+  # python2, which breaks Ansible.
+  - {dir_name: "kerberoast", repo: "https://github.com/xan7r/kerberoast/tarball/master"}
+  - {dir_name: "mikto", repo: "https://github.com/ChrisTruncer/mikto/tarball/master"}
+  - {dir_name: "Misc", repo: "https://github.com/xan7r/Misc/tarball/master"}
+  - {dir_name: "morphHTA", repo: "https://github.com/vysecurity/morphHTA/tarball/master"}
+  - {dir_name: "MS17-010", repo: "https://github.com/worawit/MS17-010/tarball/master"}
+  - {dir_name: "nlzr", repo: "https://github.com/noahpowers/nlzr/tarball/master"}
+  - {dir_name: "PowerTools", repo: "https://github.com/PowerShellEmpire/PowerTools/tarball/master"}
+  - {dir_name: "PowerUpSQL", repo: "https://github.com/NetSPI/PowerUpSQL/tarball/master"}
+  - {dir_name: "RandomPS-Scripts", repo: "https://github.com/xorrior/RandomPS-Scripts/tarball/master"}
+  - {dir_name: "SessionGopher", repo: "https://github.com/Arvanaghi/SessionGopher/tarball/master"}
+  - {dir_name: "SharpShooter", repo: "https://github.com/mdsecactivebreach/SharpShooter/tarball/master"}
+  - {dir_name: "shellshocker-pocs", repo: "https://github.com/mubix/shellshocker-pocs/tarball/master"}
+  - {dir_name: "SimplyEmail", repo: "https://github.com/SimplySecurity/SimplyEmail/tarball/master"}
+  - {dir_name: "SimplyTemplate", repo: "https://github.com/SimplySecurity/SimplyTemplate/tarball/master"}
+  - {dir_name: "sshenum", repo: "https://github.com/MacR6/sshenum/tarball/master"}
+  - {dir_name: "TikiTorch", repo: "https://github.com/rasta-mouse/TikiTorch/tarball/master"}
+  - {dir_name: "ysoserial", repo: "https://github.com/frohoff/ysoserial/tarball/master"}
+
+# aquatone, which is installed manually but a little differently than
+# the other packages
+aquatone:
+  - {dir_name: "aquatone", repo: "https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip"}
+
 # Group ownership for the tools that are installed directly to /tools
 group: root

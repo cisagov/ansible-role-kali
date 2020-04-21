@@ -1,0 +1,32 @@
+---
+# tasks file for manual installations
+
+- name: Install some tools manually
+  block:
+    - name: Create a directory for each tool that must be installed manually
+      file:
+        group: "{{ group }}"
+        # Allow both root and the desired group to have full
+        # permissions in these directories
+        mode: 0775
+        path: "{{ manually_installed_tools_base_dir }}/{{ item.dir_name }}"
+        state: directory
+      loop: "{{ manually_installed_tools }}"
+      loop_control:
+        label: "{{ item.dir_name }}"
+    - name: Manually install each tool
+      unarchive:
+        dest: "{{ manually_installed_tools_base_dir }}/{{ item.dir_name }}"
+        extra_opts:
+          - "--strip-components=1"
+        group: "{{ group }}"
+        remote_src: yes
+        src: "{{ item.repo }}"
+      loop: "{{ manually_installed_tools }}"
+      loop_control:
+        label: "{{ item.repo }}"
+
+- name: Install mono for the manually installed packages that need it
+  package:
+    name:
+      - mono-complete
