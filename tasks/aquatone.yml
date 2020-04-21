@@ -18,8 +18,7 @@
         mode: 0775
         path: /tools/{{ item.dir_name }}
         state: directory
-      loop:
-        - "{{ aquatone }}"
+      loop: "{{ aquatone }}"
       loop_control:
         label: "{{ item.dir_name }}"
     - name: Manually install aquatone
@@ -28,7 +27,6 @@
         group: "{{ group }}"
         remote_src: yes
         src: "{{ item.repo }}"
-      loop:
-        - "{{ aquatone }}"
+      loop: "{{ aquatone }}"
       loop_control:
         label: "{{ item.repo }}"
