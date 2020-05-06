@@ -71,5 +71,14 @@ manually_installed_tools:
 aquatone:
   - {dir_name: "aquatone", repo: "https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip"}
 
+# dns-profile-randomizer, which is installed manually but a little
+# differently than the other packages since it is in a private Gitlab
+# repo
+dns_profile_randomizer:
+  - {dir_name: "dns-profile-randomizer", repo: "https://gitlab.com/api/v4/projects/8989548/repository/archive"}
+
+# The Gitlab personal access token to use
+gitlab_token: "{{ lookup('aws_ssm', '/gitlab/personal_authorization_token', region='us-east-1') }}"
+
 # Group ownership for the tools that are installed directly to /tools
 group: root
