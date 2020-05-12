@@ -13,7 +13,12 @@ None.
 
 ## Role Variables ##
 
-None.
+In addition to the variables defined in
+[`defaults/main.yml`](defaults/main.yml) (for which the default values
+should suffice) this role requires the following variables:
+
+* `gitlab_token` - the Gitlab personal access token to use when
+  accessing the `dns-profile-randomizer` private repository
 
 ## Dependencies ##
 
