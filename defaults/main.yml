@@ -77,8 +77,5 @@ aquatone:
 dns_profile_randomizer:
   - {dir_name: "dns-profile-randomizer", repo: "https://gitlab.com/api/v4/projects/8989548/repository/archive"}
 
-# The Gitlab personal access token to use
-gitlab_token: "{{ lookup('aws_ssm', '/gitlab/personal_authorization_token', region='us-east-1') }}"
-
 # Group ownership for the tools that are installed directly to /tools
 group: root
