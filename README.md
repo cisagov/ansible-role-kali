@@ -22,7 +22,7 @@ should suffice) this role requires the following variables:
 
 ## Dependencies ##
 
-None.
+* [cisagov/ansible-role-pip](https://github.com/cisagov/ansible-role-pip)
 
 ## Example Playbook ##
 
