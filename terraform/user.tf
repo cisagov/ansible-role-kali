@@ -1,15 +1,17 @@
 # Create the test user
 module "user" {
-  source = "github.com/cisagov/molecule-iam-user-tf-module"
+  source = "github.com/cisagov/molecule-iam-user-tf-module?ref=bugfix%2Fadd-tags-for-role-assumption"
 
   providers = {
-    aws                   = aws.users
-    aws.images-production = aws.images_production
-    aws.images-staging    = aws.images_staging
+    aws                                    = aws.users
+    aws.images-production-provisionaccount = aws.images_production_provisionaccount
+    aws.images-staging-provisionaccount    = aws.images_staging_provisionaccount
+    aws.images-production-ssm              = aws.images_production_ssm
+    aws.images-staging-ssm                 = aws.images_staging_ssm
   }
 
+  entity         = "ansible-role-kali"
   ssm_parameters = ["/gitlab/personal_authorization_token"]
-  user_name      = "test-ansible-role-kali"
 
   tags = {
     Team        = "VM Fusion - Development"

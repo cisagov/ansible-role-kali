@@ -13,13 +13,43 @@ data "terraform_remote_state" "images_staging" {
     dynamodb_table = "terraform-state-lock"
     profile        = "cool-terraform-readstate"
     region         = "us-east-1"
-    key            = "cool-images-parameterstore/terraform.tfstate"
+    key            = "cool-accounts/images.tfstate"
   }
 
   workspace = "staging"
 }
 
 data "terraform_remote_state" "images_production" {
+  backend = "s3"
+
+  config = {
+    encrypt        = true
+    bucket         = "cisa-cool-terraform-state"
+    dynamodb_table = "terraform-state-lock"
+    profile        = "cool-terraform-readstate"
+    region         = "us-east-1"
+    key            = "cool-accounts/images.tfstate"
+  }
+
+  workspace = "production"
+}
+
+data "terraform_remote_state" "images_staging_ssm" {
+  backend = "s3"
+
+  config = {
+    encrypt        = true
+    bucket         = "cisa-cool-terraform-state"
+    dynamodb_table = "terraform-state-lock"
+    profile        = "cool-terraform-readstate"
+    region         = "us-east-1"
+    key            = "cool-images-parameterstore/terraform.tfstate"
+  }
+
+  workspace = "staging"
+}
+
+data "terraform_remote_state" "images_production_ssm" {
   backend = "s3"
 
   config = {
