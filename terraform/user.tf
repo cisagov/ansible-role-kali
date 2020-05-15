@@ -13,8 +13,5 @@ module "user" {
   entity         = "ansible-role-kali"
   ssm_parameters = ["/gitlab/personal_authorization_token"]
 
-  tags = {
-    Team        = "VM Fusion - Development"
-    Application = "ansible-role-kali testing"
-  }
+  tags = var.tags
 }
