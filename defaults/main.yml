@@ -72,7 +72,7 @@ aquatone:
   - {dir_name: "aquatone", repo: "https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip"}
 
 # dns-profile-randomizer, which is installed manually but a little
-# differently than the other packages since it is in a private Gitlab
+# differently than the other packages since it is in a private GitLab
 # repo
 dns_profile_randomizer:
   - {dir_name: "dns-profile-randomizer", repo: "https://gitlab.com/api/v4/projects/8989548/repository/archive"}
