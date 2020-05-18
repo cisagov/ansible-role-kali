@@ -12,3 +12,6 @@
 
 - name: Load tasks file for aquatone
   include_tasks: aquatone.yml
+
+- name: Load tasks file for dns-profile-randomizer
+  include_tasks: dns_profile_randomizer.yml

@@ -1,4 +1,5 @@
 ansible-lint
+boto3
 flake8
 molecule[docker]
 pre-commit

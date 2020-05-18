@@ -51,6 +51,7 @@ def test_pip_packages(host, pkg):
         "datapipe",
         "demiguise",
         "dirsearch",
+        "dns-profile-randomizer",
         "DomainTrustExplorer",
         "Egress-Assess",
         "ftpenum",

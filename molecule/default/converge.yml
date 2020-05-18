@@ -3,3 +3,5 @@
   hosts: all
   roles:
     - role: ansible-role-kali
+      vars:
+        gitlab_token: "{{ lookup('aws_ssm', '/gitlab/personal_authorization_token', region='us-east-1') }}"
