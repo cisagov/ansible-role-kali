@@ -1,6 +1,6 @@
 # Create the test user
 module "user" {
-  source = "github.com/cisagov/molecule-iam-user-tf-module?ref=bugfix%2Fadd-tags-for-role-assumption"
+  source = "github.com/cisagov/molecule-iam-user-tf-module"
 
   providers = {
     aws                                    = aws.users
