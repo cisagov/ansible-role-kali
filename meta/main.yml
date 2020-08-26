@@ -3,6 +3,8 @@ galaxy_info:
   author: Kyle Evers
   description: CISA VM Kali
   company: CISA Cyber Assessments
+  galaxy_tags:
+    - kali
   license: CC0
   min_ansible_version: 2.0
   # There is an empty platforms key because Kali linux isn't an option
@@ -13,8 +15,7 @@ galaxy_info:
   # The Ansible linter does not allow an empty platforms key, so the
   # noqa 701 is required here.
   platforms: [] # noqa 701
-  galaxy_tags:
-    - kali
+  role_name: kali
 
 dependencies:
   - src: https://github.com/cisagov/ansible-role-pip
