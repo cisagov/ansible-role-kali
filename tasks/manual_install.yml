@@ -15,7 +15,10 @@
       loop_control:
         label: "{{ item.dir_name }}"
     - name: Manually install each tool
-      unarchive:
+      # ansible-lint E208 gives an error if we don't specify the mode,
+      # but we definitely don't want to do that here since it will
+      # override the permissions on the files in the archive.
+      unarchive: # noqa 208
         dest: "{{ manually_installed_tools_base_dir }}/{{ item.dir_name }}"
         extra_opts:
           - "--strip-components=1"
