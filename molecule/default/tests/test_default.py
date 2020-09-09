@@ -35,7 +35,8 @@ def test_packages(host, pkg):
 
 
 @pytest.mark.parametrize(
-    "pkg", ["mitm6"],
+    "pkg",
+    ["mitm6"],
 )
 def test_pip_packages(host, pkg):
     """Test that appropriate pip packages were installed."""
