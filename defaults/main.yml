@@ -5,6 +5,7 @@
 tools_installed_via_package_manager:
   - crackmapexec
   - eyewitness
+  - flameshot
   - gobuster
   - mimikatz
   - nikto
