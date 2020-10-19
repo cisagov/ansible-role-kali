@@ -17,6 +17,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     [
         "crackmapexec",
         "eyewitness",
+        "flameshot",
         "gobuster",
         "mimikatz",
         "mono-complete",
