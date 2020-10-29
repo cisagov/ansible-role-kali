@@ -7,6 +7,7 @@ tools_installed_via_package_manager:
   - eyewitness
   - flameshot
   - gobuster
+  - kerberoast
   - mimikatz
   - nikto
   - powershell-empire
@@ -47,9 +48,6 @@ manually_installed_tools:
   - {dir_name: "ImpDump", repo: "https://github.com/HarmJ0y/ImpDump/tarball/master"}
   - {dir_name: "Internal-Monologue", repo: "https://github.com/eladshamir/Internal-Monologue/tarball/master"}
   - {dir_name: "KeeThief", repo: "https://github.com/HarmJ0y/KeeThief/tarball/master"}
-  # The Kali kerberoast package currently (April 16, 2020) pulls in
-  # python2, which breaks Ansible.
-  - {dir_name: "kerberoast", repo: "https://github.com/xan7r/kerberoast/tarball/master"}
   - {dir_name: "mikto", repo: "https://github.com/ChrisTruncer/mikto/tarball/master"}
   - {dir_name: "Misc", repo: "https://github.com/xan7r/Misc/tarball/master"}
   - {dir_name: "morphHTA", repo: "https://github.com/vysecurity/morphHTA/tarball/master"}
