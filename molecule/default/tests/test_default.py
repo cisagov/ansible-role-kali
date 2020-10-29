@@ -20,6 +20,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
         "flameshot",
         "kerberoast",
         "gobuster",
+        "libreoffice",
         "mimikatz",
         "mono-complete",
         "nikto",

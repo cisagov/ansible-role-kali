@@ -8,6 +8,7 @@ tools_installed_via_package_manager:
   - flameshot
   - gobuster
   - kerberoast
+  - libreoffice
   - mimikatz
   - nikto
   - powershell-empire
