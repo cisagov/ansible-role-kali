@@ -29,7 +29,7 @@
       loop_control:
         label: "{{ item.repo }}"
 
-- name: Install mono for the manually installed packages that need it
+- name: Install mono for the manually-installed packages that need it
   package:
     name:
       - mono-complete

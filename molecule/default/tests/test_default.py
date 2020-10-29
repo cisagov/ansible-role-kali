@@ -19,6 +19,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
         "eyewitness",
         "flameshot",
         "gobuster",
+        "libreoffice",
         "mimikatz",
         "mono-complete",
         "nikto",
