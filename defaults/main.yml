@@ -16,6 +16,7 @@ tools_installed_via_package_manager:
   - powersploit
   - responder
   - seclists
+  - sqlmap
   - sublist3r
   - veil
 
