@@ -29,6 +29,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
         "powersploit",
         "responder",
         "seclists",
+        "sqlmap",
         "sublist3r",
         "veil",
     ],
