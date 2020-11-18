@@ -27,10 +27,7 @@
 
     - name: Install Burp Suite Pro installation prerequisites
       package:
-        name:
-          - libfreetype6
-          # This is required to use the Ansible expect module below
-          - python3-pexpect
+        name: "{{ burp_suite_installation_prerequisites }}"
 
     - name: Install Burp Suite Pro
       expect:
