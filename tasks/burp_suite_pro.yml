@@ -94,6 +94,7 @@
       failed_when:
         - license_command.rc != 0
         - license_command.rc != 13
+        - license_command.rc != 129
       register: license_command
 
     - name: Delete local copies of Burp Suite Pro installer and license
