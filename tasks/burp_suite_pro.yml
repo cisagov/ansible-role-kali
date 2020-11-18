@@ -1,0 +1,111 @@
+---
+# Check if Burp Suite Pro is already installed
+- name: Check if Burp Suite Pro is already installed
+  stat:
+    path: "{{ burp_suite_install_directory }}"
+  register: burp_suite_directory
+
+- name: Install Burp Suite Pro
+  block:
+    - name: Grab Burp Suite Pro installer and license from S3
+      aws_s3:
+        bucket: "{{ third_party_bucket_name }}"
+        object: "{{ item }}"
+        dest: /tmp/{{ item }}
+        mode: get
+      become: no
+      delegate_to: localhost
+      loop:
+        - "{{ burp_suite_installer_object_name }}"
+        - "{{ burp_suite_license_object_name }}"
+
+    - name: Copy the Burp Suite Pro installer
+      copy:
+        dest: /tmp/{{ burp_suite_installer_object_name }}
+        mode: 0700
+        src: /tmp/{{ burp_suite_installer_object_name }}
+
+    - name: Install Burp Suite Pro installer prerequisites
+      package:
+        name:
+          - libfreetype6
+          # This is required to use the Ansible expect module below
+          - python3-pexpect
+
+    - name: Install Burp Suite Pro
+      expect:
+        command: /tmp/{{ burp_suite_installer_object_name }}
+        creates: "{{ burp_suite_install_directory }}"
+        responses:
+          # $ sudo ./burpsuite_pro_linux_v2020_11.sh
+          # Unpacking JRE ...
+          # Starting Installer ...
+          # This will install Burp Suite Professional on your computer.
+          # OK [o, Enter], Cancel [c]
+          #
+          # Click Next to continue, or Cancel to exit Setup.
+          # Select the folder where you would like Burp Suite Professional to be
+          # installed, then click Next.
+          # Where should Burp Suite Professional be installed?
+          # [/usr/local/BurpSuitePro]
+          #
+          # Create symlinks?
+          # Yes [y, Enter], No [n]
+          #
+          # Select the folder where you would like Burp Suite Professional to create symlinks, then click Next.
+          # [/usr/local/bin]
+          #
+          # Extracting files ...
+          # Setup has finished installing Burp Suite Professional on your computer.
+          # Finishing installation ...
+          "This will install Burp Suite Professional on your computer\\.": o
+          "Where should Burp Suite Professional be installed\\?": "{{ burp_suite_install_directory }}"
+          "Create symlinks\\?": "y"
+          "Select the folder where you would like Burp Suite Professional to create symlinks, then click Next": "{{ burp_suite_symlinks_directory }}"
+
+    - name: License Burp Suite Pro
+      expect:
+        chdir: "{{ burp_suite_install_directory }}"
+        command: ./jre/bin/java -Djava.awt.headless=true -jar ./burpsuite_pro.jar
+        responses:
+          # $ ./jre/bin/java -Djava.awt.headless=true -jar ./burpsuite_pro.jar
+          # Burp Suite Professional Terms & Conditions of Supply
+          #
+          # <snip>
+          # License text
+          # </snip>
+          # Do you accept the license agreement? (y/n)
+          # y
+          # This version of Burp requires a license key. To continue, please paste your license key below.
+          # <license key>
+          # Burp will now attempt to contact the license server and activate your license. This will require Internet access.
+          # NOTE: license activations are monitored. If you perform too many activations, further activations for this license may be prevented.
+          # Enter preferred activation method (o=online activation; m=manual activation; r=re-enter license key)
+          # o
+          # Your license is successfully installed and activated.
+          "Do you accept the license agreement\\?": "y"
+          "To continue, please paste your license key below\\.": "{{ lookup('file', '/tmp/' + burp_suite_license_object_name) }}"
+          "Enter preferred activation method": o
+      # This failed_when clause is required because the licensing
+      # command returns a nonzero return code even when it succeeds.
+      failed_when:
+        - license_command.rc != 0
+        - license_command.rc != 13
+      register: license_command
+
+    - name: Delete local copies of Burp Suite Pro installer and license
+      file:
+        path: /tmp/{{ item }}
+        state: absent
+      become: no
+      delegate_to: localhost
+      loop:
+        - "{{ burp_suite_installer_object_name }}"
+        - "{{ burp_suite_license_object_name }}"
+
+    - name: Delete remote copy of Burp Suite Pro installer
+      file:
+        path: /tmp/{{ burp_suite_installer_object_name }}
+        state: absent
+
+  when: not burp_suite_directory.stat.exists

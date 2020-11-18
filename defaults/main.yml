@@ -81,3 +81,17 @@ dns_profile_randomizer:
 
 # Group ownership for the tools that are installed directly to /tools
 group: root
+
+# The name of the AWS S3 bucket where third-party software is located
+third_party_bucket_name: cisa-cool-third-party-production
+# The name of the S3 object corresponding to the Burp Suite Pro Linux
+# installer
+burp_suite_installer_object_name: burpsuite_pro_linux_v2020_11.sh
+# The name of the S3 object corresponding to the Burp Suite Pro
+# license
+burp_suite_license_object_name: burpsuite_pro.license
+# The directory where Burp Suite Pro should be installed
+burp_suite_install_directory: /usr/local/BurpSuitePro
+# The directory where symlinks to the Burp Suite Pro executables
+# should be created
+burp_suite_symlinks_directory: /usr/local/bin
