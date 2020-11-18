@@ -59,6 +59,12 @@
           "Where should Burp Suite Professional be installed\\?": "{{ burp_suite_install_directory }}"
           "Create symlinks\\?": "y"
           "Select the folder where you would like Burp Suite Professional to create symlinks, then click Next": "{{ burp_suite_symlinks_directory }}"
+      # This failed_when clause is required because the installer
+      # command returns a nonzero return code even when it succeeds.
+      failed_when:
+        - install_command.rc != 0
+        - install_command.rc != 1
+      register: install_command
 
     - name: License Burp Suite Pro
       expect:
