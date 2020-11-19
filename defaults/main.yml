@@ -5,6 +5,7 @@
 tools_installed_via_package_manager:
   - crackmapexec
   - dnsutils
+  - exploitdb
   - eyewitness
   - flameshot
   - gobuster

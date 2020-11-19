@@ -17,6 +17,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     [
         "crackmapexec",
         "dnsutils",
+        "exploitdb",
         "eyewitness",
         "flameshot",
         "kerberoast",
