@@ -64,6 +64,7 @@
       failed_when:
         - install_command.rc != 0
         - install_command.rc != 1
+        - install_command.rc != 2
       register: install_command
 
     - name: License Burp Suite Pro
