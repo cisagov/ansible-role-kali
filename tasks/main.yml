@@ -1,6 +1,4 @@
 ---
-# tasks file for kali
-
 - name: Load tasks file for tools installed via package manager
   include_tasks: package_install.yml
 
@@ -15,3 +13,6 @@
 
 - name: Load tasks file for dns-profile-randomizer
   include_tasks: dns_profile_randomizer.yml
+
+- name: Load tasks file for Burp Suite Pro
+  include_tasks: burp_suite_pro.yml
