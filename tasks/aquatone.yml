@@ -1,15 +1,39 @@
 ---
-# tasks file for aquatone
-
-# This tool is installed a bit differently.  The release zip for it
+# Aquatone is installed a bit differently.  The release zip for it
 # contains pre-compiled Go code, which is what we want to install.
 - name: Install aquatone
   block:
     - name: Install dependencies for aquatone
       package:
         name:
-          - chromium
+          # Chromium is currently removed from Debian Testing
+          # (Bullseye) and therefore Kali Linux, so we install Google
+          # Chrome directly from a deb file below.  See #45 for
+          # details.
+          #
+          # TODO: Revert this change when the chromium package again
+          # becomes available.  See this issue:
+          # https://github.com/cisagov/ansible-role-kali/issues/47
+          #
+          # - chromium
           - unzip
+    # Chromium is currently removed from Debian Testing (Bullseye) and
+    # therefore Kali Linux, so we install Google Chrome directly from
+    # a deb file below.  See #45 for details.
+    #
+    # TODO: Revert this change when the chromium package again becomes
+    # available.  See this issue:
+    # https://github.com/cisagov/ansible-role-kali/issues/47
+    - name: Install Google Chrome
+      block:
+        # apt requires this package when installing a deb file
+        - name: Install xz-utils
+          package:
+            name:
+              - xz-utils
+        - name: Install Google Chrome
+          apt:
+            deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - name: Create a directory where aquatone will be installed manually
       file:
         group: "{{ group }}"
